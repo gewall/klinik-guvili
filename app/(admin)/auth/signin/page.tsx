@@ -1,7 +1,8 @@
-import React from "react";
+import React, { Suspense } from "react";
 import FormLogin from "../_components/Form-Login";
 import Typograph from "@/components/ui/typograph";
 import { Separator } from "@/components/ui/separator";
+import { Skeleton } from "@/components/ui/skeleton";
 
 const SignIn = () => {
   return (
@@ -11,7 +12,9 @@ const SignIn = () => {
           LOGIN
         </Typograph>
         <Separator className="my-4" />
-        <FormLogin />
+        <Suspense fallback={<Skeleton />}>
+          <FormLogin />
+        </Suspense>
       </div>
     </div>
   );
