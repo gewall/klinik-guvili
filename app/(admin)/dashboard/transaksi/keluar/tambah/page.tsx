@@ -129,6 +129,8 @@ const TambahKeluar = () => {
         nama: obat.nama,
         satuan: obat.satuan,
         kuantiti: obat.kuantiti,
+        expired: obat.expired,
+        jenis: obat.jenis,
         idtransaksi,
         status: "KELUAR",
       }));
@@ -387,6 +389,8 @@ const TambahKeluar = () => {
                           kuantiti: 0,
                           nama: _.nama,
                           satuan: _.satuan,
+                          expired: _.expired,
+                          jenis: _.jenis,
                         })
                       }
                     >

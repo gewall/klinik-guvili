@@ -97,6 +97,8 @@ const TambahMasuk = () => {
         nama: obat.nama,
         satuan: obat.satuan,
         kuantiti: obat.kuantiti,
+        jenis: obat.jenis,
+        expired: obat.expired,
         idtransaksi,
         status: "MASUK",
       }));
@@ -186,9 +188,9 @@ const TambahMasuk = () => {
             />
           </div>
           <Typograph variant="Sub-Header">Tambah Obat</Typograph>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-            {fields.map((_, i) => (
-              <Fragment key={i}>
+          {fields.map((_, i) => (
+            <div key={i} className="grid grid-cols-2 md:grid-cols-4 gap-2">
+              <Fragment>
                 <FormField
                   control={form.control}
                   name={`obat.${i}.nama`}
@@ -227,6 +229,26 @@ const TambahMasuk = () => {
                 />
                 <FormField
                   control={form.control}
+                  name={`obat.${i}.expired`}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Expired</FormLabel>
+                      <FormControl>
+                        <Input
+                          placeholder="Isi expired obat"
+                          type="datetime-local"
+                          {...field}
+                        />
+                      </FormControl>
+                      {/* <FormDescription>
+                      This is your public display name.
+                      </FormDescription> */}
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+                <FormField
+                  control={form.control}
                   name={`obat.${i}.satuan`}
                   render={({ field }) => (
                     <FormItem>
@@ -253,6 +275,40 @@ const TambahMasuk = () => {
                   )}
                 />
 
+                <FormField
+                  control={form.control}
+                  name={`obat.${i}.jenis`}
+                  render={({ field }) => (
+                    <FormItem>
+                      <FormLabel>Jenis</FormLabel>
+                      <Select
+                        onValueChange={field.onChange}
+                        defaultValue={field.value}
+                      >
+                        <FormControl>
+                          <SelectTrigger>
+                            <SelectValue placeholder="Pilih jenis" />
+                          </SelectTrigger>
+                        </FormControl>
+                        <SelectContent>
+                          <SelectItem value="Obat bebas">Obat bebas</SelectItem>
+                          <SelectItem value="Obat bebas terbatas">
+                            Obat bebas terbatas
+                          </SelectItem>
+                          <SelectItem value="Obat keras">Obat keras</SelectItem>
+                          <SelectItem value="Obat psikotropika">
+                            Obat psikotropika
+                          </SelectItem>
+                          <SelectItem value="Obat golongan narkotika">
+                            Obat golongan narkotika
+                          </SelectItem>
+                        </SelectContent>
+                      </Select>
+                      <FormMessage />
+                    </FormItem>
+                  )}
+                />
+
                 <FormItem className="self-end">
                   <FormLabel></FormLabel>
                   <FormControl>
@@ -270,8 +326,8 @@ const TambahMasuk = () => {
                   <FormMessage />
                 </FormItem>
               </Fragment>
-            ))}
-          </div>
+            </div>
+          ))}
           <div className="Flex">
             <Button
               variant={"ghost"}
@@ -283,6 +339,8 @@ const TambahMasuk = () => {
                   kuantiti: 0,
                   nama: "",
                   satuan: "Ampul",
+                  expired: "",
+                  jenis: "Obat bebas",
                 })
               }
             >

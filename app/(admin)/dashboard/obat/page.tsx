@@ -6,38 +6,6 @@ import { DataTable } from "../_components/DataTable";
 import { columns } from "./_lib/columns";
 import { iObat } from "./_lib/obat.type";
 type Props = {};
-const data: iObat[] = [
-  {
-    id: "1",
-    nama: "Paracetamol",
-    satuan: "Tablet",
-    kuantiti: 100,
-  },
-  {
-    id: "2",
-    nama: "Amoxicillin",
-    satuan: "Kapsul",
-    kuantiti: 50,
-  },
-  {
-    id: "3",
-    nama: "Ibuprofen",
-    satuan: "Tablet",
-    kuantiti: 75,
-  },
-  {
-    id: "4",
-    nama: "Vitamin C",
-    satuan: "Tablet",
-    kuantiti: 200,
-  },
-  {
-    id: "5",
-    nama: "Salbutamol",
-    satuan: "Sirup",
-    kuantiti: 30,
-  },
-];
 
 const Obat = (props: Props) => {
   const [data, setData] = useState<[]>([]);

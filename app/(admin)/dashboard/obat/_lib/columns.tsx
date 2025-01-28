@@ -15,6 +15,7 @@ import { Checkbox } from "@/components/ui/checkbox";
 import { iObat } from "./obat.type";
 import { useToast } from "@/hooks/use-toast";
 import Link from "next/link";
+import moment from "moment";
 
 // This type is used to define the shape of our data.
 // You can use a Zod schema here if you want.
@@ -29,8 +30,21 @@ export const columns: ColumnDef<iObat>[] = [
     header: "Satuan",
   },
   {
+    accessorKey: "jenis",
+    header: "Jenis",
+  },
+  {
     accessorKey: "kuantiti",
     header: "Kuantiti",
+  },
+  {
+    accessorKey: "expired",
+    header: "Expired",
+    cell: (d) => {
+      return d.row.original.expired
+        ? moment(d.row.original.expired).local().format("DD-MM-YYYY")
+        : "";
+    },
   },
 
   {

@@ -1,5 +1,6 @@
 import { prisma } from "@/lib/prisma";
-
+import { randomUUID } from "crypto";
+import bcrypt from "bcryptjs";
 export async function POST(request: Request) {
   try {
     // Parsing data dari request body
@@ -13,10 +14,15 @@ export async function POST(request: Request) {
         { status: 400, headers: { "Content-Type": "application/json" } }
       );
     }
+    const flatId = randomUUID();
+
+    
+    const id = await bcrypt.hash(flatId,8)
+    const fixid = id.replace(/\//g, "-")
 
     // Membuat transaksi menggunakan Prisma
     const pasien = await prisma.pasien.create({
-      data:{...data, tanggallahir: new Date(data.tanggallahir)}
+      data:{...data, tanggallahir: new Date(data.tanggallahir),id:fixid}
     });
 
 

@@ -64,15 +64,18 @@ export const columns: ColumnDef<iTransaksi>[] = [
   {
     accessorKey: "satuan",
     header: "Satuan",
+    cell: (d) => d.row.original.satuan.slice(0, 24) + "...",
   },
   {
     accessorKey: "kuantiti",
     header: "Kuantiti",
+    cell: (d) => d.row.original.satuan.slice(0, 24) + "...",
   },
 
   {
     id: "actions",
     enableHiding: false,
+    header: "Aksi",
     cell: ({ row }) => {
       const data = row.original;
       const { toast } = useToast();

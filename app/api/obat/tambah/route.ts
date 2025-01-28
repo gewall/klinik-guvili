@@ -4,7 +4,7 @@ export async function POST(request: Request) {
   try {
     // Parsing data dari request body
     const data = await request.json();
-    console.log(data);
+    const _data = data.map((_:any) => ({..._, expired: new Date(_.expired)}))
     
     // Validasi data (opsional, disarankan menggunakan library seperti zod)
     if (!data) {
@@ -16,7 +16,7 @@ export async function POST(request: Request) {
 
     // Membuat transaksi menggunakan Prisma
     const transaksi = await prisma.obat.createMany({
-      data
+      data:_data
     });
 
     if (!transaksi) {

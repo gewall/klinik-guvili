@@ -79,6 +79,7 @@ export const columns: ColumnDef<iTransaksi>[] = [
   {
     id: "actions",
     enableHiding: false,
+    header: "Aksi",
     cell: ({ row }) => {
       const data = row.original;
       const { toast } = useToast();

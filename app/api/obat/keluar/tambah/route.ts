@@ -17,6 +17,8 @@ export async function POST(request: Request) {
       nama: _.nama,
       satuan: _.satuan,
       status: _.status,
+      expired: new Date(_.expired),
+      jenis: _.jenis,
       idobat: _.id,
     }));
 

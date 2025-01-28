@@ -126,6 +126,8 @@ model Obat {
   satuan            String
   kuantiti          Int
   status            String
+  expired           DateTime?
+  jenis             String?
 
   obatKeluar        ObatKeluar[]
  
@@ -144,6 +146,9 @@ model ObatKeluar {
   satuan            String
   kuantiti          Int
   status            String
+  expired           DateTime?
+  jenis             String?
+
  
   transaksikeluar   TransaksiKeluar     @relation(fields: [idtransaksi], references: [id])
   obat              Obat?                @relation(fields: [idobat], references: [id])

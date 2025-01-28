@@ -14,6 +14,8 @@ export const obatScheme = z.object({
   idtransaksi:z.string(),
   nama:z.string(),
   satuan:z.enum(["Tablet", "Ampul", "Botol", "Fles","Pcs"]),
+  expired: z.string(),
+  jenis:z.enum(["Obat bebas", "Obat bebas terbatas", "Obat keras", "Obat psikotropika", "Obat golongan narkotika"]),
   kuantiti:z.coerce.number(),
 })
 

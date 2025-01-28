@@ -412,6 +412,8 @@ const EditKeluar = () => {
                           kuantiti: 0,
                           nama: _.nama,
                           satuan: _.satuan,
+                          expired: _.expired,
+                          jenis: _.jenis,
                         })
                       }
                     >
